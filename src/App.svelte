@@ -1,13 +1,15 @@
 <script lang="ts">
   import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import Form from './lib/Form.svelte'
   import "./css/App.scss"
 </script>
 
 <main>
-  <div>
+  <nav>
     <img src={logo} alt="Svelte Logo" />
-    <h1>Svelte Todo</h1>
-    <Counter />
+    <h1>Todo List</h1>
+  </nav>
+  <div class="container">
+    <Form />
   </div> 
 </main>
