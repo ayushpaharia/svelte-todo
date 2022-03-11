@@ -1,7 +1,7 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
-  import Form from './lib/Form.svelte'
-  import "./css/App.scss"
+  import logo from "./assets/svelte.png";
+  import Form from "./lib/Form.svelte";
+  import "./css/App.scss";
 </script>
 
 <main>
@@ -11,5 +11,5 @@
   </nav>
   <div class="container">
     <Form />
-  </div> 
+  </div>
 </main>

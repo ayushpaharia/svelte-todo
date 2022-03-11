@@ -1,15 +1,20 @@
 <script lang="ts">
   import Todo from "./Todo.svelte";
+  import uuid from "uuid"
   import Button from "./Button.svelte";
-  import db from "../db";
-  let todos = db.getAllTodos();
+  import { todos } from "../db/store";
+  import type { TodoProps } from "src/types";
+
+  let id = Date.now().toLocaleString();
+  // @ts-ignore
+  let mytodos: TodoProps[] = $todos;
 
   function addTodo() {
-    if (title === "" && description === "") {
+    if (title === "" || description === "") {
       return;
     }
-    db.createTodo({ title, description });
-    todos = db.getAllTodos();
+    // @ts-ignore
+    todos.update((todos) => [...todos, { id,title, description, completed: false }] as TodoProps[]);
   }
   function resetForm() {
     title = "";
@@ -48,7 +53,7 @@
   </div>
   <div class="todos">
     <div class="todos__container">
-      {#each todos as todo}
+      {#each mytodos as todo}
         <Todo props={todo} />
       {:else}
         <p>Nothing to show here</p>
